@@ -43,6 +43,7 @@ public class Thread_Demo_02 {
                                 "\t\t最终实现使用Callable接口来创建线程对象\n" +
                                 "介绍完毕, call方法执行完毕, 返回call方法的执行结果"
                 );
+                Thread.currentThread().sleep(10000);
                 return 666;
             }
         });
@@ -54,7 +55,11 @@ public class Thread_Demo_02 {
         Thread.sleep(200);
 
         try {
-            Integer result = (Integer)ft.get();
+            // 当test_thread线程执行一个耗时比较长的任务的时候,
+            // 调用FutureTask对象的get方法获取call()方法返回值时,
+            // main线程会等待test_thread线程执行完,
+            // 也即ft.get()逻辑不出问题, 总能拿到call方法的返回值, 不会是空值
+            Integer result = ft.get();
             System.out.println(" 拿到返回结果为:" + result);
         } catch (InterruptedException e) {
             e.printStackTrace();
