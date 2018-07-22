@@ -73,6 +73,9 @@ public class ThreadFakeNotify {
 class Demo_03_Resources{
     int i = 0;
 
+    // wait()方法的等待队列和基于synchronized锁的等待队列是两个不同的概念
+    // 使用while就是防止由于调用notify()之后,等待队列中的线程和获得了基于对象锁的线程同时执行同一个synchronized方法
+
     public synchronized void product() throws InterruptedException{
         while(i != 0){
             this.wait();
