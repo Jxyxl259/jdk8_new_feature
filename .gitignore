@@ -3,6 +3,7 @@
 # Compiled class file
 *.class
 
+#ensure git conf is correct
 thread.iml
 out/
 .idea/
